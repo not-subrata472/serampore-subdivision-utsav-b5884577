@@ -2,6 +2,14 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Kalpurush";
+  src: url("/fonts/kalpurush.ttf") format("truetype");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -12,6 +20,9 @@
  *
  * The :root and .dark blocks define the actual color values using oklch.
  * All colors MUST use oklch format.
+ *
+ * Palette: sampled directly from the শ্রীরামপুর মহকুমা utsav poster —
+ * deep royal blue ink, ice-white paper, and soft sky-blue tints.
  *
  * To add a new semantic color:
  * 1. Add the variable to :root (light value) and .dark (dark value)
@@ -59,77 +70,95 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-sky: var(--sky);
+  --color-royal: var(--royal);
+  --color-royal-deep: var(--royal-deep);
+  --color-royal-soft: var(--royal-soft);
+  --color-royal-mist: var(--royal-mist);
+  --font-display: "Kalpurush", "Noto Sans Bengali", sans-serif;
+  --font-serif: "Kalpurush", "Noto Sans Bengali", sans-serif;
+  --font-sans: "Noto Sans Bengali", sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --radius: 1rem;
+  --background: oklch(0.977 0.009 247.9);
+  --foreground: oklch(0.262 0.105 265);
+  --card: oklch(0.989 0.006 240);
+  --card-foreground: oklch(0.262 0.105 265);
+  --popover: oklch(0.989 0.006 240);
+  --popover-foreground: oklch(0.262 0.105 265);
+  --primary: oklch(0.42 0.165 265);
+  --primary-foreground: oklch(0.98 0.008 240);
+  --secondary: oklch(0.915 0.045 245);
+  --secondary-foreground: oklch(0.262 0.105 265);
+  --muted: oklch(0.935 0.024 246);
+  --muted-foreground: oklch(0.52 0.06 262);
+  --accent: oklch(0.78 0.11 240);
+  --accent-foreground: oklch(0.24 0.09 265);
+  --sky: oklch(0.78 0.11 240);
+  --royal: oklch(0.42 0.165 265);
+  --royal-deep: oklch(0.247 0.123 264.9);
+  --royal-soft: oklch(0.93 0.035 243);
+  --royal-mist: oklch(0.965 0.018 246);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.262 0.105 265 / 14%);
+  --input: oklch(0.262 0.105 265 / 18%);
+  --ring: oklch(0.55 0.14 262);
+  --chart-1: oklch(0.55 0.16 262);
+  --chart-2: oklch(0.75 0.11 240);
+  --chart-3: oklch(0.42 0.13 275);
+  --chart-4: oklch(0.86 0.06 235);
+  --chart-5: oklch(0.65 0.14 255);
+  --sidebar: oklch(0.989 0.006 240);
+  --sidebar-foreground: oklch(0.262 0.105 265);
+  --sidebar-primary: oklch(0.42 0.165 265);
+  --sidebar-primary-foreground: oklch(0.98 0.008 240);
+  --sidebar-accent: oklch(0.93 0.035 243);
+  --sidebar-accent-foreground: oklch(0.262 0.105 265);
+  --sidebar-border: oklch(0.262 0.105 265 / 12%);
+  --sidebar-ring: oklch(0.55 0.14 262);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
+  --background: oklch(0.21 0.09 265);
+  --foreground: oklch(0.955 0.015 240);
+  --card: oklch(0.26 0.105 265);
+  --card-foreground: oklch(0.955 0.015 240);
+  --popover: oklch(0.26 0.105 265);
+  --popover-foreground: oklch(0.955 0.015 240);
+  --primary: oklch(0.78 0.11 240);
+  --primary-foreground: oklch(0.22 0.10 265);
+  --secondary: oklch(0.33 0.10 265);
+  --secondary-foreground: oklch(0.955 0.015 240);
+  --muted: oklch(0.33 0.10 265);
+  --muted-foreground: oklch(0.80 0.04 245);
+  --accent: oklch(0.33 0.10 265);
+  --accent-foreground: oklch(0.955 0.015 240);
+  --sky: oklch(0.80 0.11 240);
+  --royal: oklch(0.80 0.11 240);
+  --royal-deep: oklch(0.93 0.035 243);
+  --royal-soft: oklch(0.30 0.09 265);
+  --royal-mist: oklch(0.26 0.08 265);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.10 245);
+  --chart-1: oklch(0.75 0.14 250);
+  --chart-2: oklch(0.65 0.11 240);
+  --chart-3: oklch(0.86 0.06 235);
+  --chart-4: oklch(0.55 0.13 270);
+  --chart-5: oklch(0.70 0.12 255);
+  --sidebar: oklch(0.26 0.105 265);
+  --sidebar-foreground: oklch(0.955 0.015 240);
+  --sidebar-primary: oklch(0.78 0.11 240);
+  --sidebar-primary-foreground: oklch(0.22 0.10 265);
+  --sidebar-accent: oklch(0.33 0.10 265);
+  --sidebar-accent-foreground: oklch(0.955 0.015 240);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.72 0.10 245);
 }
 
 @layer base {
@@ -137,8 +166,54 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
   }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-16px); }
+}
+
+@utility floaty { animation: floaty 7s ease-in-out infinite; }
+@utility floaty-slow { animation: floaty 11s ease-in-out infinite; }
+
+/*
+ * Squircle — the continuous-curvature silhouette from the utsav poster's
+ * ornate frame. Percentage radii keep the shape whole at every screen size
+ * while leaving box-shadow and borders intact.
+ */
+@utility squircle {
+  border-radius: 4rem;
+  corner-shape: squircle;
+}
+@utility squircle-tight {
+  border-radius: 30%;
+  corner-shape: squircle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .floaty, .floaty-slow { animation: none; }
 }
