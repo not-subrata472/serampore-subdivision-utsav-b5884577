@@ -226,63 +226,37 @@ function CountdownTimer({ tone = "light" }: { tone?: "light" | "onDark" }) {
 }
 
 function HeroMusic({ src }: { src: string }) {
-  const sentinelRef = useRef<HTMLSpanElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
-    const sentinel = sentinelRef.current;
-    if (!audio || !sentinel) return;
-
-    let inView = false;
-    let started = false;
+    if (!audio) return;
 
     const tryPlay = () => {
-      audio
-        .play()
-        .then(() => {
-          started = true;
-        })
-        .catch(() => {
-          /* browser blocks autoplay until first interaction */
-        });
+      void audio.play().catch(() => {
+        /* Browsers require the visitor's first interaction for audible playback. */
+      });
     };
 
     const onFirstInteraction = () => {
-      if (inView && !started) tryPlay();
+      tryPlay();
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        inView = entry?.isIntersecting ?? false;
-        if (inView) {
-          tryPlay();
-        } else {
-          audio.pause();
-        }
-      },
-      { threshold: 0.35 },
-    );
-    observer.observe(sentinel);
-
-    window.addEventListener("pointerdown", onFirstInteraction);
-    window.addEventListener("keydown", onFirstInteraction);
+    audio.load();
+    tryPlay();
+    window.addEventListener("pointerdown", onFirstInteraction, { capture: true, once: true });
+    window.addEventListener("touchstart", onFirstInteraction, { capture: true, once: true });
+    window.addEventListener("keydown", onFirstInteraction, { capture: true, once: true });
 
     return () => {
-      observer.disconnect();
-      window.removeEventListener("pointerdown", onFirstInteraction);
-      window.removeEventListener("keydown", onFirstInteraction);
+      window.removeEventListener("pointerdown", onFirstInteraction, { capture: true });
+      window.removeEventListener("touchstart", onFirstInteraction, { capture: true });
+      window.removeEventListener("keydown", onFirstInteraction, { capture: true });
       audio.pause();
     };
   }, [src]);
 
-  return (
-    <>
-      <span ref={sentinelRef} aria-hidden="true" className="absolute inset-0 -z-10" />
-      <audio ref={audioRef} src={src} loop preload="auto" className="hidden" />
-    </>
-  );
+  return <audio ref={audioRef} src={src} loop preload="auto" className="hidden" />;
 }
 
 function DevotionalPage() {
