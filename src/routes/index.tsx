@@ -15,6 +15,8 @@ import utsavBanner from "@/assets/utsav-logo-navy.jpg.asset.json";
 import utsavPoster from "@/assets/utsav-poster.jpg.asset.json";
 import utsavPosterSquare from "@/assets/utsav-poster-square.jpg.asset.json";
 import heroMusic from "@/assets/sabse-sundar-naam.mp3.asset.json";
+import upcomingUtsavPoster from "@/assets/upcoming-utsav-blue-poster.jpeg.asset.json";
+import upcomingUtsavMusic from "@/assets/suno-re-bhai-37s.mp3.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -60,8 +62,18 @@ const scenes = [
     title: "\n",
     time: "",
     text: "\n",
+    image: upcomingUtsavPoster.url,
+    imageAlt: "শ্রীরামপুর মহকুমা উৎসব — অস্তি-উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
+    music: upcomingUtsavMusic.url,
+  },
+  {
+    label: "\n",
+    title: "\n",
+    time: "",
+    text: "\n",
     image: utsavPoster.url,
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — অস্তি-উৎসজ্জী মহোৎসবের পোস্টার",
+    music: undefined,
   },
   {
     label: "\n",
@@ -70,6 +82,7 @@ const scenes = [
     text: "\n",
     image: utsavPosterSquare.url,
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — ১৩৯ তম জন্ম মহোৎসব, অস্তি উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
+    music: undefined,
   },
 ];
 
@@ -82,10 +95,28 @@ type GalleryScene = {
   text: string;
   image: string;
   imageAlt: string;
+  music?: string;
 };
 
 function GalleryFigure({ scene }: { scene: GalleryScene }) {
-  const { label, title, image, imageAlt } = scene;
+  const { label, title, image, imageAlt, music } = scene;
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const handleViewerChange = (open: boolean) => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (open) {
+      audio.currentTime = 0;
+      void audio.play().catch(() => {
+        /* The visitor can retry by closing and reopening the picture. */
+      });
+      return;
+    }
+
+    audio.pause();
+    audio.currentTime = 0;
+  };
 
   return (
     <div
@@ -98,7 +129,7 @@ function GalleryFigure({ scene }: { scene: GalleryScene }) {
         loading="lazy"
         className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
       />
-      <Dialog>
+      <Dialog onOpenChange={handleViewerChange}>
         <DialogTrigger asChild>
           <Button
             type="button"
@@ -120,6 +151,7 @@ function GalleryFigure({ scene }: { scene: GalleryScene }) {
           />
         </DialogContent>
       </Dialog>
+      {music ? <audio ref={audioRef} src={music} preload="auto" className="hidden" /> : null}
       <span className="sr-only">{label}</span>
     </div>
   );
