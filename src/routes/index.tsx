@@ -73,7 +73,6 @@ const scenes = [
     text: "\n",
     image: utsavPoster.url,
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — অস্তি-উৎসজ্জী মহোৎসবের পোস্টার",
-    music: undefined,
   },
   {
     label: "\n",
@@ -82,7 +81,6 @@ const scenes = [
     text: "\n",
     image: utsavPosterSquare.url,
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — ১৩৯ তম জন্ম মহোৎসব, অস্তি উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
-    music: undefined,
   },
 ];
 
