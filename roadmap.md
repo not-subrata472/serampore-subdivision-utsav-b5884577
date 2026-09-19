@@ -11,3 +11,6 @@
 - [x] Recolour the whole site to the blue-and-white poster palette (first uploaded picture)
 - [x] Switch the main logo (header, footer, tab icon) to the navy poster (second uploaded picture)
 - [x] Reshape the top hero image container into a full squircle
+
+- [ ] Add uploaded blue festival poster to the upcoming-festival gallery
+- [ ] Trim uploaded music to 37 seconds and play it only when that poster is manually opened
