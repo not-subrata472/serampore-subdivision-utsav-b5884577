@@ -16,7 +16,7 @@ import utsavPoster from "@/assets/utsav-poster.jpg.asset.json";
 import utsavPosterSquare from "@/assets/utsav-poster-square.jpg.asset.json";
 import heroMusic from "@/assets/sabse-sundar-naam.mp3.asset.json";
 import upcomingUtsavPoster from "@/assets/upcoming-utsav-blue-poster.jpeg.asset.json";
-import upcomingUtsavMusic from "@/assets/suno-re-bhai-37s.mp3.asset.json";
+import upcomingUtsavMusic from "@/assets/tomake-jokhon-mone-pore.mp3.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
