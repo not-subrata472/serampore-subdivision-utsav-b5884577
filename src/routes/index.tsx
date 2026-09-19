@@ -17,6 +17,7 @@ import utsavPosterSquare from "@/assets/utsav-poster-square.jpg.asset.json";
 import heroMusic from "@/assets/sabse-sundar-naam.mp3.asset.json";
 import upcomingUtsavPoster from "@/assets/upcoming-utsav-blue-poster.jpeg.asset.json";
 import upcomingUtsavMusic from "@/assets/tomake-jokhon-mone-pore.mp3.asset.json";
+import secondPosterMusic from "@/assets/suno-re-bhai-v2-37s.mp3.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -73,6 +74,7 @@ const scenes = [
     text: "\n",
     image: utsavPoster.url,
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — অস্তি-উৎসজ্জী মহোৎসবের পোস্টার",
+    music: secondPosterMusic.url,
   },
   {
     label: "\n",
