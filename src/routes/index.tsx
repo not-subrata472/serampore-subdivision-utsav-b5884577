@@ -471,7 +471,7 @@ function DevotionalPage() {
                   <CalendarDays className="size-4" aria-hidden="true" /> শ্রীরামপুর মহকুমায়
                 </span>
                 <h2 id="scenes-title" className="mt-5 text-4xl font-normal leading-[1.08] sm:text-6xl">আসন্ন উৎসবের পরিবেশ</h2>
-                <p className="mt-3 inline-block rounded-xl border border-foreground/15 bg-background/80 px-4 py-2.5 text-base font-semibold text-foreground/80 shadow-sm backdrop-blur-sm sm:text-lg">Click on the pictures for Song</p>
+               <p className="mt-3 inline-block rounded-xl border border-white/20 bg-blue-900 px-4 py-2.5 text-base font-extrabold text-white shadow-sm backdrop-blur-sm sm:text-lg">Click on the pictures for Song</p>
               </div>
               <p className="max-w-xl text-sm font-semibold leading-loose text-foreground/60 sm:text-base">
                 {"\n"}
