@@ -14,3 +14,5 @@
 
 - [x] Add uploaded blue festival poster to the upcoming-festival gallery
 - [x] Trim uploaded music to 37 seconds and play it only when that poster is manually opened
+
+- [x] Replace the matching poster music with Tomake Jokhon Mone Pore and open it by clicking anywhere on the picture
