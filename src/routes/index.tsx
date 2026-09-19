@@ -232,7 +232,11 @@ function HeroMusic({ src }: { src: string }) {
     const audio = audioRef.current;
     if (!audio) return;
 
+    const heroSection = audio.closest("section");
+    let isHeroVisible = true;
+
     const tryPlay = () => {
+      if (!isHeroVisible) return;
       void audio.play().catch(() => {
         /* Browsers require the visitor's first interaction for audible playback. */
       });
@@ -244,11 +248,28 @@ function HeroMusic({ src }: { src: string }) {
 
     audio.load();
     tryPlay();
+
+    const observer = heroSection
+      ? new IntersectionObserver(
+          ([entry]) => {
+            isHeroVisible = entry?.isIntersecting ?? false;
+            if (isHeroVisible) {
+              tryPlay();
+            } else {
+              audio.pause();
+            }
+          },
+          { threshold: 0 },
+        )
+      : null;
+    if (heroSection) observer?.observe(heroSection);
+
     window.addEventListener("pointerdown", onFirstInteraction, { capture: true, once: true });
     window.addEventListener("touchstart", onFirstInteraction, { capture: true, once: true });
     window.addEventListener("keydown", onFirstInteraction, { capture: true, once: true });
 
     return () => {
+      observer?.disconnect();
       window.removeEventListener("pointerdown", onFirstInteraction, { capture: true });
       window.removeEventListener("touchstart", onFirstInteraction, { capture: true });
       window.removeEventListener("keydown", onFirstInteraction, { capture: true });
