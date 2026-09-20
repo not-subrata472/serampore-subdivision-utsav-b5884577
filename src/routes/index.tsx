@@ -528,12 +528,27 @@ function DevotionalPage() {
               <p className="mt-5 max-w-md font-medium leading-loose text-primary-foreground/85">{"\n"}</p>
               <div className="mt-8 space-y-5 font-semibold">
                 <p className="flex items-start gap-3 break-all text-[0.7rem] leading-relaxed sm:text-xs"><Mail className="mt-0.5 size-4 shrink-0" aria-hidden="true" /> serampore.mohokuma.utsav26@gmail.com</p>
-                <div className="grid max-w-md grid-cols-1 gap-x-6 gap-y-2 text-sm tabular-nums sm:grid-cols-2" aria-label="যোগাযোগের ফোন নম্বর">
-                  <a href="tel:+918240603619" className="whitespace-nowrap">+91 82406 03619</a>
-                  <a href="tel:+918961896757" className="whitespace-nowrap">+91 89618 96757</a>
-                  <a href="tel:+918777465400" className="whitespace-nowrap">+91 87774 65400</a>
-                  <a href="tel:+918100669016" className="whitespace-nowrap">+91 81006 69016</a>
-                  <a href="tel:+919433457684" className="whitespace-nowrap sm:col-span-2">+91 94334 57684</a>
+                <div className="grid max-w-md grid-cols-1 gap-x-6 gap-y-3 text-sm tabular-nums sm:grid-cols-2" aria-label="যোগাযোগের ফোন নম্বর">
+                  <a href="tel:+918240603619" className="flex flex-wrap items-center gap-x-2">
+                    <span className="whitespace-nowrap">+91 82406 03619</span>
+                    <span className="whitespace-nowrap font-[family-name:Kalpurush] text-xs text-primary/90 sm:hidden">শ্রী শুভ সুন্দর ব্যানার্জী</span>
+                  </a>
+                  <a href="tel:+918961896757" className="flex flex-wrap items-center gap-x-2">
+                    <span className="whitespace-nowrap">+91 89618 96757</span>
+                    <span className="whitespace-nowrap font-[family-name:Kalpurush] text-xs text-primary/90 sm:hidden">শ্রী পার্থ প্রতিম দত্ত</span>
+                  </a>
+                  <a href="tel:+918777465400" className="flex flex-wrap items-center gap-x-2">
+                    <span className="whitespace-nowrap">+91 87774 65400</span>
+                    <span className="whitespace-nowrap font-[family-name:Kalpurush] text-xs text-primary/90 sm:hidden">শ্রী ঋকদীপ্ত রায়</span>
+                  </a>
+                  <a href="tel:+918100669016" className="flex flex-wrap items-center gap-x-2">
+                    <span className="whitespace-nowrap">+91 81006 69016</span>
+                    <span className="whitespace-nowrap font-[family-name:Kalpurush] text-xs text-primary/90 sm:hidden">শ্রী সুব্রত সরকার</span>
+                  </a>
+                  <a href="tel:+919433457684" className="flex flex-wrap items-center gap-x-2 sm:col-span-2">
+                    <span className="whitespace-nowrap">+91 94334 57684</span>
+                    <span className="whitespace-nowrap font-[family-name:Kalpurush] text-xs text-primary/90 sm:hidden">শ্রী অশোক সিংহ</span>
+                  </a>
                 </div>
               </div>
             </div>
