@@ -119,6 +119,17 @@ function AdminStatusPage() {
           />
         </div>
 
+        <div
+          className={`rounded-xl border px-4 py-3 text-center text-sm font-bold ${
+            enabled
+              ? "border-amber-300 bg-amber-100 text-amber-900"
+              : "border-emerald-300 bg-emerald-100 text-emerald-900"
+          }`}
+          role="status"
+        >
+          Maintenance Mode: {enabled ? "Turned on" : "Turned off"}
+        </div>
+
         <div className="flex items-center justify-between rounded-xl border border-border px-4 py-3">
           <Label htmlFor="maintenance">Maintenance mode</Label>
           <Switch
