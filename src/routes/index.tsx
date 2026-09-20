@@ -231,36 +231,20 @@ function CountdownTimer({ tone = "light" }: { tone?: "light" | "onDark" }) {
 
 function HeroMusic({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     const heroSection = audio.closest("section");
-    let isHeroVisible = true;
-
-    const tryPlay = () => {
-      if (!isHeroVisible) return;
-      void audio.play().catch(() => {
-        /* Browsers require the visitor's first interaction for audible playback. */
-      });
-    };
-
-    const onFirstInteraction = () => {
-      tryPlay();
-    };
-
-    audio.load();
-    tryPlay();
 
     const observer = heroSection
       ? new IntersectionObserver(
           ([entry]) => {
-            isHeroVisible = entry?.isIntersecting ?? false;
-            if (isHeroVisible) {
-              tryPlay();
-            } else {
+            if (!entry?.isIntersecting) {
               audio.pause();
+              setPlaying(false);
             }
           },
           { threshold: 0 },
@@ -268,20 +252,44 @@ function HeroMusic({ src }: { src: string }) {
       : null;
     if (heroSection) observer?.observe(heroSection);
 
-    window.addEventListener("pointerdown", onFirstInteraction, { capture: true, once: true });
-    window.addEventListener("touchstart", onFirstInteraction, { capture: true, once: true });
-    window.addEventListener("keydown", onFirstInteraction, { capture: true, once: true });
+    const handleEnded = () => setPlaying(false);
+    audio.addEventListener("ended", handleEnded);
 
     return () => {
       observer?.disconnect();
-      window.removeEventListener("pointerdown", onFirstInteraction, { capture: true });
-      window.removeEventListener("touchstart", onFirstInteraction, { capture: true });
-      window.removeEventListener("keydown", onFirstInteraction, { capture: true });
+      audio.removeEventListener("ended", handleEnded);
       audio.pause();
     };
   }, [src]);
 
-  return <audio ref={audioRef} src={src} loop preload="auto" className="hidden" />;
+  const toggle = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (audio.paused) {
+      void audio.play().then(() => setPlaying(true)).catch(() => {
+        /* Browser autoplay policy may block playback without a user gesture. */
+      });
+    } else {
+      audio.pause();
+      audio.currentTime = 0;
+      setPlaying(false);
+    }
+  };
+
+  return (
+    <>
+      <audio ref={audioRef} src={src} loop preload="auto" className="hidden" />
+      <Button
+        type="button"
+        onClick={toggle}
+        variant="kindledOutline"
+        size="pill"
+        className="border-background/40 bg-background/90"
+      >
+        {playing ? "Pause Song" : "Click for Song"}
+      </Button>
+    </>
+  );
 }
 
 function DevotionalPage() {
@@ -328,7 +336,6 @@ function DevotionalPage() {
       <main id="top">
         <section className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-8 sm:pt-12">
           <div className="group relative overflow-hidden squircle border-4 border-background/60 bg-foreground shadow-2xl">
-            <HeroMusic src={heroMusic.url} />
             <img
               src={thakurShrine.url}
               alt=""
@@ -371,6 +378,7 @@ function DevotionalPage() {
 
               </p>
                 <div className="mt-7 flex flex-wrap items-start justify-start gap-3">
+                  <HeroMusic src={heroMusic.url} />
                   <Button asChild variant="kindled" size="pill"><a href="#gallery">উৎসবের পরিবেশ দেখুন</a></Button>
                   <Button asChild variant="kindledOutline" size="pill" className="border-background/40 bg-background/90"><a href="#ideal">আদর্শ জানুন</a></Button>
                 </div>
