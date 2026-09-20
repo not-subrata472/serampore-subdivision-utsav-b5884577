@@ -231,7 +231,6 @@ function CountdownTimer({ tone = "light" }: { tone?: "light" | "onDark" }) {
 
 function HeroMusic({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -244,7 +243,6 @@ function HeroMusic({ src }: { src: string }) {
           ([entry]) => {
             if (!entry?.isIntersecting) {
               audio.pause();
-              setPlaying(false);
             }
           },
           { threshold: 0 },
@@ -252,12 +250,8 @@ function HeroMusic({ src }: { src: string }) {
       : null;
     if (heroSection) observer?.observe(heroSection);
 
-    const handleEnded = () => setPlaying(false);
-    audio.addEventListener("ended", handleEnded);
-
     return () => {
       observer?.disconnect();
-      audio.removeEventListener("ended", handleEnded);
       audio.pause();
     };
   }, [src]);
@@ -266,13 +260,11 @@ function HeroMusic({ src }: { src: string }) {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
-      void audio.play().then(() => setPlaying(true)).catch(() => {
+      void audio.play().catch(() => {
         /* Browser autoplay policy may block playback without a user gesture. */
       });
     } else {
       audio.pause();
-      audio.currentTime = 0;
-      setPlaying(false);
     }
   };
 
