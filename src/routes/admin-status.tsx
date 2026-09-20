@@ -1,0 +1,113 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Toaster } from "@/components/ui/sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { setMaintenanceMode } from "@/lib/maintenance.functions";
+
+export const Route = createFileRoute("/admin-status")({
+  head: () => ({
+    meta: [
+      { title: "Site Status Control | Serampore Utsav" },
+      {
+        name: "description",
+        content: "Private control panel to switch the Serampore Utsav website into maintenance mode.",
+      },
+      { name: "robots", content: "noindex, nofollow" },
+      { property: "og:title", content: "Site Status Control | Serampore Utsav" },
+      {
+        property: "og:description",
+        content: "Private control panel to switch the Serampore Utsav website into maintenance mode.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+    ],
+  }),
+  component: AdminStatusPage,
+});
+
+function AdminStatusPage() {
+  const [passcode, setPasscode] = useState("");
+  const [enabled, setEnabled] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const toggleMaintenance = useServerFn(setMaintenanceMode);
+
+  useEffect(() => {
+    let active = true;
+    void supabase
+      .from("app_settings")
+      .select("is_maintenance_mode")
+      .limit(1)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (active && data) setEnabled(Boolean(data.is_maintenance_mode));
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const handleToggle = async (next: boolean) => {
+    if (!passcode) {
+      toast.error("Enter the admin passcode first.");
+      return;
+    }
+    setSaving(true);
+    const previous = enabled;
+    setEnabled(next);
+    try {
+      await toggleMaintenance({ data: { passcode, enabled: next } });
+      toast.success(next ? "Maintenance mode is ON" : "Maintenance mode is OFF");
+    } catch {
+      setEnabled(previous);
+      toast.error("Could not update. Check the passcode.");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-background px-4">
+      <Toaster />
+      <div className="w-full max-w-sm space-y-6 rounded-2xl border border-border bg-card p-6 shadow-sm">
+        <div>
+          <h1 className="text-xl font-bold text-foreground">Site status</h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Turn maintenance mode on to show the update notice to every visitor.
+          </p>
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="passcode">Admin passcode</Label>
+          <Input
+            id="passcode"
+            type="password"
+            value={passcode}
+            onChange={(e) => setPasscode(e.target.value)}
+            placeholder="Enter passcode"
+          />
+        </div>
+
+        <div className="flex items-center justify-between rounded-xl border border-border px-4 py-3">
+          <Label htmlFor="maintenance">Maintenance mode</Label>
+          <Switch
+            id="maintenance"
+            checked={enabled}
+            disabled={saving}
+            onCheckedChange={(v) => void handleToggle(v)}
+          />
+        </div>
+
+        <Button variant="outline" className="w-full" asChild>
+          <a href="/">Back to site</a>
+        </Button>
+      </div>
+    </main>
+  );
+}
