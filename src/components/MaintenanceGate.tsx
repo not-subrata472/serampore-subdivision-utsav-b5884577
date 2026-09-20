@@ -40,17 +40,14 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  if (maintenance) {
-    return (
-      <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-background px-6 text-center">
-        <div className="max-w-md">
-          <h1 className="text-2xl font-bold text-foreground sm:text-3xl">
-            We are currently updating the website. Please check back shortly.
-          </h1>
+  return (
+    <>
+      {maintenance && (
+        <div className="sticky top-0 z-[9999] w-full bg-royal-deep px-4 py-3 text-center text-base font-bold text-white shadow-md sm:text-lg">
+          Sorry, The site is currently in Maintenance, Please come again later.
         </div>
-      </div>
-    );
-  }
-
-  return <>{children}</>;
+      )}
+      {children}
+    </>
+  );
 }
