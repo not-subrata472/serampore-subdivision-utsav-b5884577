@@ -44,7 +44,7 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
     <>
       {maintenance && (
         <div className="sticky top-0 z-[9999] w-full border-b border-white/20 bg-royal-deep px-4 py-4 text-center text-lg font-extrabold text-white shadow-lg sm:text-xl">
-          Sorry, The site is currently in Maintenance certain things may not work properly, Please come again later.
+          Sorry, The site is currently in Maintenance. Certain things may not work properly, Please come again later.
         </div>
       )}
       {children}
