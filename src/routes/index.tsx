@@ -353,7 +353,7 @@ function DevotionalPage() {
               <div className="flex flex-col items-start justify-center">
               <span className="inline-block rounded-full border border-background/20 bg-background/10 px-3.5 py-1.5 text-xs font-bold text-background backdrop-blur-sm">শ্রীরামপুর মহকুমায়</span>
               <h1 className="mt-5 max-w-[13ch] text-4xl font-normal leading-[1.12] text-background drop-shadow-md sm:text-6xl lg:text-7xl">
-                শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের শুভ ১৩৯তম জন্ম মহা মহোৎসব&nbsp;
+                 পরমপ্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের শুভ ১৩৯তম জন্ম মহা মহোৎসব&nbsp;
               </h1>
               <p className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-sky/45 bg-sky/15 px-4 py-2 text-base font-bold text-sky backdrop-blur-sm sm:text-lg">
                 <CalendarDays className="size-4 shrink-0 sm:size-5" aria-hidden="true" />
@@ -383,7 +383,7 @@ function DevotionalPage() {
           <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:py-20">
             <div>
               <span className="text-sm font-bold text-primary"></span>
-              <h2 className="mt-3 max-w-[18ch] text-4xl font-normal leading-tight sm:text-6xl">শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের প্রেম, সেবা ও কল্যাণ চেতনায় অস্তি-উৎসর্জ্জীর অভিযাত্রা....</h2>
+               <h2 className="mt-3 max-w-[18ch] text-4xl font-normal leading-tight sm:text-6xl">পরমপ্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের প্রেম, সেবা ও কল্যাণ চেতনায় অস্তি-উৎসর্জ্জীর অভিযাত্রা....</h2>
             </div>
             <div className="space-y-5 text-base font-medium leading-loose text-foreground/70">
               <p>{"\n"}</p>
@@ -393,7 +393,7 @@ function DevotionalPage() {
 সমগ্র এই মহোৎসবটি পরম পূজ্যপাদ শ্রীশ্রীআচার্য্যদেবের অনুপ্রেরণা, আশীর্বাদ ও ঐকান্তিক প্রচেষ্টায় আয়োজিত হচ্ছে। তাঁর স্নেহময় প্রেরণা ও দিকনির্দেশনাকে পাথেয় করে এই মহোৎসবকে সার্থক ও সুন্দরভাবে সম্পন্ন করার প্রয়াস গ্রহণ করা হয়েছে।
 
 
-শ্রীশ্রীঠাকুরের জীবন ও আদর্শ মানুষের অস্তি, বৃদ্ধি ও কল্যাণের পথকে সুস্পষ্ট করে তোলে। তিনি দেখিয়েছেন কীভাবে ব্যক্তি, পরিবার ও সমাজকে ভালোবাসা, সেবা, সদাচার এবং আদর্শনিষ্ঠ জীবনযাপনের মাধ্যমে আরও সুস্থ, সুন্দর ও সমৃদ্ধ করে গড়ে তোলা যায়। তাঁর এই জীবনমুখী আদর্শ আজও অসংখ্য মানুষের প্রেরণার উৎস।
+ পরমপ্রেমময় শ্রীশ্রীঠাকুরের জীবন ও আদর্শ মানুষের অস্তি, বৃদ্ধি ও কল্যাণের পথকে সুস্পষ্ট করে তোলে। তিনি দেখিয়েছেন কীভাবে ব্যক্তি, পরিবার ও সমাজকে ভালোবাসা, সেবা, সদাচার এবং আদর্শনিষ্ঠ জীবনযাপনের মাধ্যমে আরও সুস্থ, সুন্দর ও সমৃদ্ধ করে গড়ে তোলা যায়। তাঁর এই জীবনমুখী আদর্শ আজও অসংখ্য মানুষের প্রেরণার উৎস।
 
 
 “অস্তি-উৎসর্জ্জী” কেবল একটি উৎসবের নাম নয়; এটি এক গভীর জীবনদর্শনের প্রতীক। নিজের অস্তিকে রক্ষা, লালন ও বিকশিত করে তাকে বৃহত্তর মঙ্গল ও মানবকল্যাণের কাজে নিবেদন করার মধ্যেই এর মূল ভাবনা নিহিত। সেই চেতনাকে সামনে রেখেই এই উৎসবের আয়োজন।
@@ -408,7 +408,7 @@ function DevotionalPage() {
                 <div className="my-4 border-t border-dashed border-foreground/50" aria-hidden="true" />
                 <div className="space-y-1 font-semibold leading-relaxed">
                   <p>“অপরের মঙ্গল-কামনাই নিজ মঙ্গলের প্রসূতি।”</p>
-                  <p>“শ্রীশ্রীঠাকুর অনুকূলচন্দ্র”</p>
+                   <p>“পরম প্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্র”</p>
                   <p>“সত্যানুসরণ”</p>
                 </div>
                 <div className="mt-4 border-t border-dashed border-foreground/50" aria-hidden="true" />
