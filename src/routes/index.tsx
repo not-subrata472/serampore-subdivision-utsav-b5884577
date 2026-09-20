@@ -286,7 +286,7 @@ function HeroMusic({ src }: { src: string }) {
         size="pill"
         className="border-background/40 bg-background/90"
       >
-        {playing ? "Pause Song" : "Click for Song"}
+        Click for Song
       </Button>
     </>
   );
