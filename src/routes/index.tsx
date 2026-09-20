@@ -405,7 +405,7 @@ function DevotionalPage() {
             </div>
             <div className="space-y-5 text-base font-medium leading-loose text-foreground/70">
               <p>{"\n"}</p>
-              <p className="whitespace-pre-line">{`পরম প্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের ১৩৯তম শুভ জন্ম-মহামহোৎসব উপলক্ষে আয়োজিত শ্রীরামপুর মহকুমা উৎসব “অস্তি-উৎসর্জ্জী” (প্রথম বর্ষ)-এর ওয়েবসাইটে আপনাকে স্বাগত জানাই।
+               <p className="whitespace-pre-line">{`পরমপ্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের ১৩৯তম শুভ জন্ম-মহামহোৎসব উপলক্ষে আয়োজিত শ্রীরামপুর মহকুমা উৎসব “অস্তি-উৎসর্জ্জী” (প্রথম বর্ষ)-এর ওয়েবসাইটে আপনাকে স্বাগত জানাই।
 
 
 সমগ্র এই মহোৎসবটি পরম পূজ্যপাদ শ্রীশ্রীআচার্য্যদেবের অনুপ্রেরণা, আশীর্বাদ ও ঐকান্তিক প্রচেষ্টায় আয়োজিত হচ্ছে। তাঁর স্নেহময় প্রেরণা ও দিকনির্দেশনাকে পাথেয় করে এই মহোৎসবকে সার্থক ও সুন্দরভাবে সম্পন্ন করার প্রয়াস গ্রহণ করা হয়েছে।
@@ -426,7 +426,7 @@ function DevotionalPage() {
                 <div className="my-4 border-t border-dashed border-foreground/50" aria-hidden="true" />
                 <div className="space-y-1 font-semibold leading-relaxed">
                   <p>“অপরের মঙ্গল-কামনাই নিজ মঙ্গলের প্রসূতি।”</p>
-                   <p>“পরম প্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্র”</p>
+                    <p>“পরমপ্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্র”</p>
                   <p>“সত্যানুসরণ”</p>
                 </div>
                 <div className="mt-4 border-t border-dashed border-foreground/50" aria-hidden="true" />
