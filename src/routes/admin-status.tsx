@@ -87,6 +87,7 @@ function AdminStatusPage() {
     setEnabled(next);
     try {
       await toggleMaintenance({ data: { passcode, enabled: next } });
+      window.localStorage.setItem(PASSCODE_STORAGE_KEY, passcode);
       toast.success(next ? "Maintenance mode is ON" : "Maintenance mode is OFF");
     } catch {
       setEnabled(previous);
