@@ -231,10 +231,18 @@ function CountdownTimer({ tone = "light" }: { tone?: "light" | "onDark" }) {
 
 function HeroMusic({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const wasPlayingRef = useRef(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
+
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
 
     const heroSection = audio.closest("section");
 
@@ -242,7 +250,13 @@ function HeroMusic({ src }: { src: string }) {
       ? new IntersectionObserver(
           ([entry]) => {
             if (!entry?.isIntersecting) {
-              audio.pause();
+              if (!audio.paused) {
+                audio.pause();
+              }
+            } else if (wasPlayingRef.current) {
+              void audio.play().catch(() => {
+                /* Browser autoplay policy may block playback without a user gesture. */
+              });
             }
           },
           { threshold: 0 },
@@ -252,6 +266,8 @@ function HeroMusic({ src }: { src: string }) {
 
     return () => {
       observer?.disconnect();
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
       audio.pause();
     };
   }, [src]);
@@ -260,10 +276,12 @@ function HeroMusic({ src }: { src: string }) {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
+      wasPlayingRef.current = true;
       void audio.play().catch(() => {
         /* Browser autoplay policy may block playback without a user gesture. */
       });
     } else {
+      wasPlayingRef.current = false;
       audio.pause();
     }
   };
@@ -278,7 +296,7 @@ function HeroMusic({ src }: { src: string }) {
         size="pill"
         className="border-background/40 bg-background/90"
       >
-        Click for Song
+        {isPlaying ? "Click for Stop" : "Click for Song"}
       </Button>
     </>
   );
