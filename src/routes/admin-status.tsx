@@ -32,6 +32,8 @@ export const Route = createFileRoute("/admin-status")({
   component: AdminStatusPage,
 });
 
+const PASSCODE_STORAGE_KEY = "admin-status-passcode";
+
 function AdminStatusPage() {
   const [passcode, setPasscode] = useState("");
   const [enabled, setEnabled] = useState(false);
@@ -39,17 +41,39 @@ function AdminStatusPage() {
   const toggleMaintenance = useServerFn(setMaintenanceMode);
 
   useEffect(() => {
+    const saved = window.localStorage.getItem(PASSCODE_STORAGE_KEY);
+    if (saved) setPasscode(saved);
+
     let active = true;
-    void supabase
-      .from("app_settings")
-      .select("is_maintenance_mode")
-      .limit(1)
-      .maybeSingle()
-      .then(({ data }) => {
-        if (active && data) setEnabled(Boolean(data.is_maintenance_mode));
-      });
+    const load = async () => {
+      const { data } = await supabase
+        .from("app_settings")
+        .select("is_maintenance_mode")
+        .limit(1)
+        .maybeSingle();
+      if (active && data) setEnabled(Boolean(data.is_maintenance_mode));
+    };
+    void load();
+
+    const channel = supabase
+      .channel("admin-status-app-settings")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "app_settings" },
+        (payload) => {
+          const row = payload.new as { is_maintenance_mode?: boolean } | null;
+          if (row && typeof row.is_maintenance_mode === "boolean") {
+            setEnabled(row.is_maintenance_mode);
+          } else {
+            void load();
+          }
+        },
+      )
+      .subscribe();
+
     return () => {
       active = false;
+      void supabase.removeChannel(channel);
     };
   }, []);
 
@@ -63,6 +87,7 @@ function AdminStatusPage() {
     setEnabled(next);
     try {
       await toggleMaintenance({ data: { passcode, enabled: next } });
+      window.localStorage.setItem(PASSCODE_STORAGE_KEY, passcode);
       toast.success(next ? "Maintenance mode is ON" : "Maintenance mode is OFF");
     } catch {
       setEnabled(previous);
@@ -92,6 +117,17 @@ function AdminStatusPage() {
             onChange={(e) => setPasscode(e.target.value)}
             placeholder="Enter passcode"
           />
+        </div>
+
+        <div
+          className={`rounded-xl border px-4 py-3 text-center text-sm font-bold ${
+            enabled
+              ? "border-amber-300 bg-amber-100 text-amber-900"
+              : "border-emerald-300 bg-emerald-100 text-emerald-900"
+          }`}
+          role="status"
+        >
+          Maintenance Mode: {enabled ? "Turned on" : "Turned off"}
         </div>
 
         <div className="flex items-center justify-between rounded-xl border border-border px-4 py-3">
