@@ -445,7 +445,7 @@ function DevotionalPage() {
               <span className="text-sm font-bold text-primary"></span>
                <h2 className="mt-3 max-w-[18ch] text-4xl font-normal leading-tight sm:text-6xl">পরমপ্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের প্রেম, সেবা ও কল্যাণ চেতনায় অস্তি-উৎসর্জ্জীর অভিযাত্রা....</h2>
             </div>
-            <div className="space-y-5 text-base font-medium leading-loose text-foreground/70">
+            <div className="space-y-3 text-base font-medium leading-relaxed text-foreground/70">
               <p>{"\n"}</p>
                <p className="whitespace-pre-line">{`পরমপ্রেমময় শ্রীশ্রীঠাকুর অনুকূলচন্দ্রের ১৩৯তম শুভ জন্ম-মহামহোৎসব উপলক্ষে আয়োজিত শ্রীরামপুর মহকুমা উৎসব “অস্তি-উৎসর্জ্জী” (প্রথম বর্ষ)-এর ওয়েবসাইটে আপনাকে স্বাগত জানাই।
 
