@@ -6,6 +6,7 @@ import {
   Mail,
   MapPin,
   Maximize2,
+  Play,
 } from "lucide-react";
 
 import thakurPortrait from "@/assets/thakur-portrait.jpg.asset.json";
