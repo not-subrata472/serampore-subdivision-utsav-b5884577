@@ -20,6 +20,8 @@ import upcomingUtsavPoster from "@/assets/upcoming-utsav-blue-poster.jpeg.asset.
 import upcomingUtsavMusic from "@/assets/tomake-jokhon-mone-pore.mp3.asset.json";
 import secondPosterMusic from "@/assets/suno-re-bhai-from-37s.mp3.asset.json";
 import thirdPosterMusic from "@/assets/param-pita.mp3.asset.json";
+import fourthPoster from "@/assets/utsav-poster-four.png.asset.json";
+import fourthPosterMusic from "@/assets/gallery-four-song.mp3.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -86,6 +88,15 @@ const scenes = [
     image: utsavPosterSquare.url,
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — ১৩৯ তম জন্ম মহোৎসব, অস্তি উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
     music: thirdPosterMusic.url,
+  },
+  {
+    label: "\n",
+    title: "\n",
+    time: "",
+    text: "\n",
+    image: fourthPoster.url,
+    imageAlt: "শ্রীরামপুর মহকুমা উৎসব — অস্তি-উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
+    music: fourthPosterMusic.url,
   },
   {
     label: "\n",
