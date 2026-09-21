@@ -104,10 +104,10 @@ type GalleryScene = {
   title: string;
   time: string;
   text: string;
-  image?: string;
-  video?: string;
+  image?: string | undefined;
+  video?: string | undefined;
   imageAlt: string;
-  music?: string;
+  music?: string | undefined;
 };
 
 function GalleryFigure({ scene }: { scene: GalleryScene }) {
