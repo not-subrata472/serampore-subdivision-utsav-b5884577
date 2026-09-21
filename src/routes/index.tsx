@@ -540,7 +540,7 @@ function DevotionalPage() {
 
             <div className="mt-10 flex max-w-2xl flex-col gap-6 sm:gap-8">
               {scenes.map((scene) => (
-                <article key={scene.image} className="group overflow-hidden rounded-[2rem] border border-foreground/10 bg-background shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <article key={scene.image || scene.video} className="group overflow-hidden rounded-[2rem] border border-foreground/10 bg-background shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                   <GalleryFigure scene={scene} />
                 </article>
               ))}
