@@ -142,13 +142,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      {isAdminStatus ? (
+      <MaintenanceGate hideRibbon={isAdminStatus}>
         <Outlet />
-      ) : (
-        <MaintenanceGate>
-          <Outlet />
-        </MaintenanceGate>
-      )}
+      </MaintenanceGate>
     </QueryClientProvider>
   );
 }

@@ -2,7 +2,13 @@ import { useEffect, useState, type ReactNode } from "react";
 
 import { supabase } from "@/integrations/supabase/client";
 
-export function MaintenanceGate({ children }: { children: ReactNode }) {
+export function MaintenanceGate({
+  children,
+  hideRibbon = false,
+}: {
+  children: ReactNode;
+  hideRibbon?: boolean;
+}) {
   const [maintenance, setMaintenance] = useState(false);
 
   useEffect(() => {
@@ -42,11 +48,11 @@ export function MaintenanceGate({ children }: { children: ReactNode }) {
 
   return (
     <>
-      {maintenance && (
+      {maintenance && !hideRibbon ? (
         <div className="sticky top-0 z-[9999] w-full border-b border-white/20 bg-royal-deep px-4 py-4 text-center text-lg font-extrabold text-white shadow-lg sm:text-xl">
           Sorry, The site is currently in Maintenance. Certain things may not work properly, Please come again later.
         </div>
-      )}
+      ) : null}
       {children}
 
     </>
