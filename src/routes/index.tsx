@@ -20,7 +20,7 @@ import upcomingUtsavPoster from "@/assets/upcoming-utsav-blue-poster.jpeg.asset.
 import upcomingUtsavMusic from "@/assets/tomake-jokhon-mone-pore.mp3.asset.json";
 import secondPosterMusic from "@/assets/suno-re-bhai-from-37s.mp3.asset.json";
 import thirdPosterMusic from "@/assets/param-pita.mp3.asset.json";
-import fourthPoster from "@/assets/utsav-poster-four.png.asset.json";
+import fourthPoster from "@/assets/utsav-poster-four-new.jpg.asset.json";
 import fourthPosterMusic from "@/assets/gallery-four-song.mp3.asset.json";
 import { Button } from "@/components/ui/button";
 import {
