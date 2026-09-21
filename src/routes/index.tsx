@@ -104,7 +104,8 @@ type GalleryScene = {
   title: string;
   time: string;
   text: string;
-  image: string;
+  image?: string;
+  video?: string;
   imageAlt: string;
   music?: string;
 };
