@@ -386,7 +386,7 @@ function DevotionalPage() {
             alt="অস্তি উৎসর্জ্জী মহোৎসবের প্রাতিষ্ঠানিক প্রতীক"
             className="size-10 squircle-tight object-cover shadow-md ring-1 ring-foreground/10 sm:size-11"
           />
-          <strong className="block text-xl leading-none sm:text-2xl">অস্তি উৎসর্জ্জী মহোৎসব</strong>
+          <strong className="block text-xl leading-none sm:text-2xl">অস্তি-উৎসর্জ্জী মহোৎসব</strong>
         </a>
         <nav className="hidden items-center gap-8 md:flex" aria-label="প্রধান দিকনির্দেশনা">
           <a href="#ideal" className="text-sm font-semibold hover:text-primary">আদর্শ</a>
@@ -630,7 +630,7 @@ function DevotionalPage() {
       </main>
 
       <footer className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <div className="flex items-center gap-2"><img src={utsavBanner.url} alt="" className="size-8 squircle-tight object-cover ring-1 ring-foreground/10" /><strong>অস্তি উৎসর্জ্জী মহোৎসব{"\n"}</strong></div>
+        <div className="flex items-center gap-2"><img src={utsavBanner.url} alt="" className="size-8 squircle-tight object-cover ring-1 ring-foreground/10" /><strong>অস্তি-উৎসর্জ্জী মহোৎসব</strong></div>
         <div className="flex flex-wrap gap-5 text-xs font-semibold text-foreground/55"><span className="block w-full text-center text-base font-extrabold text-royal-deep sm:text-lg">উৎসবে সকলের সবান্ধবে আমন্ত্রণ রইল</span><a href="#">{"\n"}</a><a href="#">{"\n"}</a></div>
       </footer>
     </div>
