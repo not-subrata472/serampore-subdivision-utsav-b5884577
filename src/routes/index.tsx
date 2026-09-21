@@ -6,6 +6,7 @@ import {
   Mail,
   MapPin,
   Maximize2,
+  Play,
 } from "lucide-react";
 
 import thakurPortrait from "@/assets/thakur-portrait.jpg.asset.json";
@@ -86,6 +87,14 @@ const scenes = [
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — ১৩৯ তম জন্ম মহোৎসব, অস্তি উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
     music: thirdPosterMusic.url,
   },
+  {
+    label: "\n",
+    title: "\n",
+    time: "",
+    text: "\n",
+    video: "B1RpDh8Gl_Q",
+    imageAlt: "শ্রীরামপুর মহকুমা উৎসব — সম্পর্কিত ইউটিউব ভিডিও",
+  },
 ];
 
 const contactEmail = "serampore.mohokuma.utsav26@gmail.com";
@@ -95,13 +104,14 @@ type GalleryScene = {
   title: string;
   time: string;
   text: string;
-  image: string;
+  image?: string | undefined;
+  video?: string | undefined;
   imageAlt: string;
-  music?: string;
+  music?: string | undefined;
 };
 
 function GalleryFigure({ scene }: { scene: GalleryScene }) {
-  const { label, title, image, imageAlt, music } = scene;
+  const { label, title, image, video, imageAlt, music } = scene;
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleViewerChange = (open: boolean) => {
@@ -120,6 +130,47 @@ function GalleryFigure({ scene }: { scene: GalleryScene }) {
     audio.currentTime = 0;
   };
 
+  const mediaPreview = video ? (
+    <div className="relative aspect-video w-full bg-black">
+      <img
+        src={`https://img.youtube.com/vi/${video}/hqdefault.jpg`}
+        alt={imageAlt}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+      />
+      <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+        <div className="rounded-full bg-white/90 p-3 shadow-lg">
+          <Play className="size-8 fill-foreground text-foreground" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  ) : (
+    <img
+      src={image}
+      alt={imageAlt}
+      loading="lazy"
+      className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+    />
+  );
+
+  const mediaDialog = video ? (
+    <div className="aspect-video w-full overflow-hidden rounded-lg">
+      <iframe
+        src={`https://www.youtube.com/embed/${video}?autoplay=1&rel=0`}
+        title={imageAlt}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="h-full w-full border-0"
+      />
+    </div>
+  ) : (
+    <img
+      src={image}
+      alt={imageAlt}
+      className="max-h-[86dvh] max-w-full object-contain"
+    />
+  );
+
   return (
     <div
       className="relative overflow-hidden"
@@ -133,12 +184,7 @@ function GalleryFigure({ scene }: { scene: GalleryScene }) {
             aria-label={`${imageAlt} বড় করে দেখুন`}
             className="block h-auto w-full rounded-none p-0 focus-visible:ring-inset"
           >
-            <img
-              src={image}
-              alt={imageAlt}
-              loading="lazy"
-              className="h-auto w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
-            />
+            {mediaPreview}
           </Button>
         </DialogTrigger>
         <DialogTrigger asChild>
@@ -155,11 +201,7 @@ function GalleryFigure({ scene }: { scene: GalleryScene }) {
         <DialogContent className="flex max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-6xl items-center justify-center overflow-hidden border-background/20 bg-foreground/95 p-3 shadow-2xl sm:rounded-2xl sm:p-5 [&>button]:rounded-full [&>button]:bg-background [&>button]:p-2 [&>button]:text-foreground [&>button]:opacity-100">
           <DialogTitle className="sr-only">{title}</DialogTitle>
           <DialogDescription className="sr-only">{label}</DialogDescription>
-          <img
-            src={image}
-            alt={imageAlt}
-            className="max-h-[86dvh] max-w-full object-contain"
-          />
+          {mediaDialog}
         </DialogContent>
       </Dialog>
       {music ? <audio ref={audioRef} src={music} preload="auto" className="hidden" /> : null}
@@ -498,7 +540,7 @@ function DevotionalPage() {
 
             <div className="mt-10 flex max-w-2xl flex-col gap-6 sm:gap-8">
               {scenes.map((scene) => (
-                <article key={scene.image} className="group overflow-hidden rounded-[2rem] border border-foreground/10 bg-background shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                <article key={scene.image || scene.video} className="group overflow-hidden rounded-[2rem] border border-foreground/10 bg-background shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
                   <GalleryFigure scene={scene} />
                 </article>
               ))}
