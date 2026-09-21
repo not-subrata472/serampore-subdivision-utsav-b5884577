@@ -87,6 +87,14 @@ const scenes = [
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — ১৩৯ তম জন্ম মহোৎসব, অস্তি উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
     music: thirdPosterMusic.url,
   },
+  {
+    label: "\n",
+    title: "\n",
+    time: "",
+    text: "\n",
+    video: "B1RpDh8Gl_Q",
+    imageAlt: "শ্রীরামপুর মহকুমা উৎসব — সম্পর্কিত ইউটিউব ভিডিও",
+  },
 ];
 
 const contactEmail = "serampore.mohokuma.utsav26@gmail.com";
