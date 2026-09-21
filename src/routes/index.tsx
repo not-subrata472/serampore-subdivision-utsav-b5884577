@@ -600,11 +600,11 @@ function DevotionalPage() {
                   </a>
                   <a href="tel:+918961896757" className="flex flex-wrap items-center gap-x-2">
                     <span className="whitespace-nowrap">+91 89618 96757</span>
-                    <span className="whitespace-nowrap font-sans text-sm font-bold text-white sm:text-base">শ্রী পার্থ প্রতিম দত্ত</span>
+                    <span className="whitespace-nowrap font-sans text-sm font-bold text-white sm:text-base">শ্রী পার্থ প্রতিম দত্তরায়</span>
                   </a>
                   <a href="tel:+918777465400" className="flex flex-wrap items-center gap-x-2">
                     <span className="whitespace-nowrap">+91 87774 65400</span>
-                    <span className="whitespace-nowrap font-sans text-sm font-bold text-white sm:text-base">শ্রী ঋকদীপ্ত রায়</span>
+                    <span className="whitespace-nowrap font-sans text-sm font-bold text-white sm:text-base">শ্রী ঋকদীপ্তি রায়</span>
                   </a>
                   <a href="tel:+918100669016" className="flex flex-wrap items-center gap-x-2">
                     <span className="whitespace-nowrap">+91 81006 69016</span>
