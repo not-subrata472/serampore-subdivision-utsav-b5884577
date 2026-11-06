@@ -22,7 +22,6 @@ import secondPosterMusic from "@/assets/suno-re-bhai-from-37s.mp3.asset.json";
 import thirdPosterMusic from "@/assets/param-pita.mp3.asset.json";
 import fourthPoster from "@/assets/utsav-poster-four-new.jpg.asset.json";
 import fourthPosterMusic from "@/assets/gallery-four-song.mp3.asset.json";
-import novemberPoster from "@/assets/utsav-poster-nov-2026.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -98,14 +97,6 @@ const scenes = [
     image: fourthPoster.url,
     imageAlt: "শ্রীরামপুর মহকুমা উৎসব — অস্তি-উৎসর্জ্জী মহোৎসবের নীল-সাদা পোস্টার",
     music: fourthPosterMusic.url,
-  },
-  {
-    label: "\n",
-    title: "\n",
-    time: "",
-    text: "\n",
-    image: novemberPoster.url,
-    imageAlt: "শ্রীরামপুর মহকুমা উৎসব — ১৩৯তম জন্মবার্ষিকী ও ১৩ই ডিসেম্বর ২০২৬-এর নীল-সাদা আমন্ত্রণপত্র",
   },
   {
     label: "\n",

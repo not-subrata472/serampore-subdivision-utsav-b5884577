@@ -16,4 +16,3 @@
 - [x] Trim uploaded music to 37 seconds and play it only when that poster is manually opened
 
 - [x] Replace the matching poster music with Tomake Jokhon Mone Pore and open it by clicking anywhere on the picture
-- [x] Add the November 2026 invitation poster as a new picture in the upcoming-festival gallery
