@@ -22,7 +22,7 @@ import secondPosterMusic from "@/assets/suno-re-bhai-from-37s.mp3.asset.json";
 import thirdPosterMusic from "@/assets/param-pita.mp3.asset.json";
 import fourthPoster from "@/assets/utsav-poster-four-new.jpg.asset.json";
 import fourthPosterMusic from "@/assets/gallery-four-song.mp3.asset.json";
-import utsavSchedulePoster from "@/assets/utsav-schedule-poster.jpeg.asset.json";
+import utsavSchedulePoster from "@/assets/utsav-schedule-poster-updated.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -564,13 +564,36 @@ function DevotionalPage() {
                   {"\n"}
                 </p>
               </div>
-              <div className="overflow-hidden rounded-[2rem] border border-royal/20 bg-background/70 shadow-sm">
-                <img
-                  src={utsavSchedulePoster.url}
-                  alt="শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার"
-                  className="block h-auto w-full"
-                />
-              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    aria-label="উৎসবের সময়সূচীর পোস্টার বড় করে দেখুন"
+                    className="group relative block h-auto w-full overflow-hidden rounded-[2rem] border border-royal/20 bg-background/70 p-0 shadow-sm focus-visible:ring-inset"
+                  >
+                    <img
+                      src={utsavSchedulePoster.url}
+                      alt="শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার"
+                      className="block h-auto w-full object-contain"
+                    />
+                    <span className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-2 text-xs font-bold text-foreground shadow-sm backdrop-blur">
+                      <Maximize2 className="size-3.5" aria-hidden="true" /> পূর্ণ পর্দা
+                    </span>
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="flex max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-6xl items-center justify-center overflow-hidden border-background/20 bg-foreground/95 p-3 shadow-2xl sm:rounded-2xl sm:p-5 [&>button]:rounded-full [&>button]:bg-background [&>button]:p-2 [&>button]:text-foreground [&>button]:opacity-100">
+                  <DialogTitle className="sr-only">উৎসবের সময়সূচীর পোস্টার</DialogTitle>
+                  <DialogDescription className="sr-only">
+                    শ্রীরামপুর মহকুমা উৎসবের সম্পূর্ণ পোস্টার
+                  </DialogDescription>
+                  <img
+                    src={utsavSchedulePoster.url}
+                    alt="শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার"
+                    className="max-h-[86dvh] max-w-full object-contain"
+                  />
+                </DialogContent>
+              </Dialog>
             </div>
 
               <div className="mt-14 grid items-center gap-7 border-t border-royal/15 pt-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
