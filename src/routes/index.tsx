@@ -22,6 +22,7 @@ import secondPosterMusic from "@/assets/suno-re-bhai-from-37s.mp3.asset.json";
 import thirdPosterMusic from "@/assets/param-pita.mp3.asset.json";
 import fourthPoster from "@/assets/utsav-poster-four-new.jpg.asset.json";
 import fourthPosterMusic from "@/assets/gallery-four-song.mp3.asset.json";
+import utsavSchedulePoster from "@/assets/utsav-schedule-poster.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -563,8 +564,12 @@ function DevotionalPage() {
                   {"\n"}
                 </p>
               </div>
-              <div className="flex min-h-[14rem] items-center justify-center rounded-[2rem] border border-royal/20 bg-background/70 p-8 shadow-sm sm:min-h-[18rem]">
-                <p className="text-center text-3xl font-normal leading-relaxed text-royal-deep sm:text-4xl">পরে জানানো হবে...</p>
+              <div className="overflow-hidden rounded-[2rem] border border-royal/20 bg-background/70 shadow-sm">
+                <img
+                  src={utsavSchedulePoster.url}
+                  alt="শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার"
+                  className="block h-auto w-full"
+                />
               </div>
             </div>
 
