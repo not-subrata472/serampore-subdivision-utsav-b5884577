@@ -22,6 +22,8 @@ import secondPosterMusic from "@/assets/suno-re-bhai-from-37s.mp3.asset.json";
 import thirdPosterMusic from "@/assets/param-pita.mp3.asset.json";
 import fourthPoster from "@/assets/utsav-poster-four-new.jpg.asset.json";
 import fourthPosterMusic from "@/assets/gallery-four-song.mp3.asset.json";
+import utsavScheduleCentres from "@/assets/utsav-schedule-centres.jpeg.asset.json";
+import utsavScheduleGuidelines from "@/assets/utsav-schedule-guidelines.jpeg.asset.json";
 import utsavSchedulePoster from "@/assets/utsav-schedule-poster-updated.jpeg.asset.json";
 import { Button } from "@/components/ui/button";
 import {
@@ -110,6 +112,24 @@ const scenes = [
 ];
 
 const contactEmail = "serampore.mohokuma.utsav26@gmail.com";
+
+const schedulePosters = [
+  {
+    image: utsavScheduleCentres.url,
+    alt: "শ্রীরামপুর মহকুমার বিহার ও কেন্দ্র মন্দিরসমূহের তালিকা",
+    title: "বিহার ও কেন্দ্র মন্দিরসমূহ",
+  },
+  {
+    image: utsavScheduleGuidelines.url,
+    alt: "উৎসবের নির্দেশিকা, অনুষ্ঠান সংক্রান্ত তথ্য ও QR কোড",
+    title: "উৎসবের নির্দেশিকা",
+  },
+  {
+    image: utsavSchedulePoster.url,
+    alt: "শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার",
+    title: "উৎসবের পোস্টার",
+  },
+];
 
 type GalleryScene = {
   label: string;
@@ -564,36 +584,40 @@ function DevotionalPage() {
                   {"\n"}
                 </p>
               </div>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    aria-label="উৎসবের সময়সূচীর পোস্টার বড় করে দেখুন"
-                    className="group relative block h-auto w-full overflow-hidden rounded-[2rem] border border-royal/20 bg-background/70 p-0 shadow-sm focus-visible:ring-inset"
-                  >
-                    <img
-                      src={utsavSchedulePoster.url}
-                      alt="শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার"
-                      className="block h-auto w-full object-contain"
-                    />
-                    <span className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-2 text-xs font-bold text-foreground shadow-sm backdrop-blur">
-                      <Maximize2 className="size-3.5" aria-hidden="true" /> পূর্ণ পর্দা
-                    </span>
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="flex max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-6xl items-center justify-center overflow-hidden border-background/20 bg-foreground/95 p-3 shadow-2xl sm:rounded-2xl sm:p-5 [&>button]:rounded-full [&>button]:bg-background [&>button]:p-2 [&>button]:text-foreground [&>button]:opacity-100">
-                  <DialogTitle className="sr-only">উৎসবের সময়সূচীর পোস্টার</DialogTitle>
-                  <DialogDescription className="sr-only">
-                    শ্রীরামপুর মহকুমা উৎসবের সম্পূর্ণ পোস্টার
-                  </DialogDescription>
-                  <img
-                    src={utsavSchedulePoster.url}
-                    alt="শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার"
-                    className="max-h-[86dvh] max-w-full object-contain"
-                  />
-                </DialogContent>
-              </Dialog>
+              <div className="flex flex-col gap-5">
+                {schedulePosters.map((poster) => (
+                  <Dialog key={poster.image}>
+                    <DialogTrigger asChild>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        aria-label={`${poster.title} বড় করে দেখুন`}
+                        className="group relative block h-auto w-full overflow-hidden rounded-[2rem] border border-royal/20 bg-background/70 p-0 shadow-sm focus-visible:ring-inset"
+                      >
+                        <img
+                          src={poster.image}
+                          alt={poster.alt}
+                          className="block h-auto w-full object-contain"
+                        />
+                        <span className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-2 text-xs font-bold text-foreground shadow-sm backdrop-blur">
+                          <Maximize2 className="size-3.5" aria-hidden="true" /> পূর্ণ পর্দা
+                        </span>
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="flex max-h-[92dvh] w-[calc(100%-1.5rem)] max-w-6xl items-center justify-center overflow-hidden border-background/20 bg-foreground/95 p-3 shadow-2xl sm:rounded-2xl sm:p-5 [&>button]:rounded-full [&>button]:bg-background [&>button]:p-2 [&>button]:text-foreground [&>button]:opacity-100">
+                      <DialogTitle className="sr-only">{poster.title}</DialogTitle>
+                      <DialogDescription className="sr-only">
+                        {poster.alt}
+                      </DialogDescription>
+                      <img
+                        src={poster.image}
+                        alt={poster.alt}
+                        className="max-h-[86dvh] max-w-full object-contain"
+                      />
+                    </DialogContent>
+                  </Dialog>
+                ))}
+              </div>
             </div>
 
               <div className="mt-14 grid items-center gap-7 border-t border-royal/15 pt-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
