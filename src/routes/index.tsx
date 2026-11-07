@@ -115,6 +115,11 @@ const contactEmail = "serampore.mohokuma.utsav26@gmail.com";
 
 const schedulePosters = [
   {
+    image: utsavSchedulePoster.url,
+    alt: "শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার",
+    title: "উৎসবের পোস্টার",
+  },
+  {
     image: utsavScheduleCentres.url,
     alt: "শ্রীরামপুর মহকুমার বিহার ও কেন্দ্র মন্দিরসমূহের তালিকা",
     title: "বিহার ও কেন্দ্র মন্দিরসমূহ",
@@ -123,11 +128,6 @@ const schedulePosters = [
     image: utsavScheduleGuidelines.url,
     alt: "উৎসবের নির্দেশিকা, অনুষ্ঠান সংক্রান্ত তথ্য ও QR কোড",
     title: "উৎসবের নির্দেশিকা",
-  },
-  {
-    image: utsavSchedulePoster.url,
-    alt: "শ্রীরামপুর মহকুমা উৎসবের ১৩ই ডিসেম্বর ২০২৬-এর বাংলা পোস্টার",
-    title: "উৎসবের পোস্টার",
   },
 ];
 
